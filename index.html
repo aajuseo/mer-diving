@@ -16,12 +16,70 @@
             max-width: 900px;
             margin: 40px auto;
         }
+
+        /* 이전/다음 버튼 배경색 변경 */
+        .fc-prev-button,
+        .fc-next-button {
+            background-color: #333 !important;
+            /* 원하는 색상으로 변경 */
+            border: none;
+            color: white;
+            border-radius: 4px;
+            padding: 6px 12px;
+        }
+
+        /* 마우스 오버 시 색상 */
+        .fc-prev-button:hover,
+        .fc-next-button:hover {
+            background-color: #777 !important;
+        }
+
+        .custom-filter {
+            height: 32px;
+            /* FullCalendar 기본 버튼 높이에 맞춤 */
+            background-color: #333;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            padding: 4px 32px 4px 8px;
+            appearance: none;
+            /* 기본 화살표 제거 */
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%22240%22%20height%3D%22240%22%20viewBox%3D%220%200%20240%20240%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M0%2030l120%20120L240%2030z%22%20fill%3D%22white%22/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            /* ← 여기서 커서 오른쪽 여백 조절 */
+            background-size: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <div id='calendar'></div>
     <script>
+        function applyFilters(calendar) {
+            const selectedCenter = document.getElementById('centerFilter').value;
+            const selectedClass = document.getElementById('classFilter').value;
+
+            const filtered = rawEvents.filter(event => {
+                const matchesCenter =
+                    selectedCenter === 'none' || event.extendedProps.center === selectedCenter;
+                const matchesClass =
+                    selectedClass === 'none' || event.title === selectedClass;
+
+                return matchesCenter && matchesClass;
+            });
+            const coloredEvents = filtered.map(event => ({
+                ...event,
+                display: 'block',
+                color: programColors[event.title] || '#cccccc',
+                textColor: '#000'
+            }));
+
+            calendar.removeAllEvents();
+            calendar.addEventSource(coloredEvents);
+        }
+
         const programDescriptions = {
             '레벨테스트': '라이센스 취득을 위한 레벨테스트입니다.',
             '이퀄 세미나': '압력균형 이해<br/>F-TUBE 이해<br/>압력기관 통제<br/>프렌젤 지상실행<br/>제한수역 실행<br/><br/>이론 교육장에서 이론 수업 먼저 진행됩니다.',
@@ -201,13 +259,29 @@
 
 
         document.addEventListener('DOMContentLoaded', function () {
-            const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+            const calendarEl = document.getElementById('calendar');
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                eventTimeFormat: {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: false
+                },
                 initialView: 'dayGridMonth',
                 events: events,
                 headerToolbar: {
-                    left: '',// 필요 시 여기에 필터 버튼 추가 예정
+                    left: 'centerFilterDropdown classFilterDropdown',// 필요 시 여기에 필터 버튼 추가 예정
                     center: 'title',
                     right: 'prev,next'
+                },
+                customButtons: {
+                    centerFilterDropdown: {
+                        text: '지점 ▼',
+                        click: () => { }
+                    },
+                    classFilterDropdown: {
+                        text: '수업 ▼',
+                        click: () => { }
+                    }
                 },
                 titleFormat: function (date) {
                     const year = date.date.year;
@@ -235,7 +309,49 @@
                 }
             });
             calendar.render();
+
+            // 필터 드롭다운입
+            const centerSelect = document.createElement('select');
+            centerSelect.id = 'centerFilter';
+            centerSelect.classList.add('custom-filter');
+            centerSelect.innerHTML = `
+                <option value="none">전체 지점</option>
+                <option value="일산">일산</option>
+                <option value="잠실">잠실</option>
+                <option value="파라다이브">파라다이브</option>
+                `;
+
+            const classSelect = document.createElement('select');
+            classSelect.id = 'classFilter';
+            classSelect.classList.add('custom-filter');
+            classSelect.innerHTML = `
+                <option value="none">전체 수업</option>
+                <option value="강사와 함께 펀다이빙">강사와 함께 펀다이빙</option>
+                <option value="레벨테스트">레벨테스트</option>
+                <option value="마스터 교육">마스터 교육</option>
+                <option value="마스터 트레이닝">마스터 트레이닝</option>
+                <option value="머메이드">머메이드</option>
+                <option value="세미나">세미나</option>
+                <option value="세션교육">세션교육</option>
+                <option value="스페셜티">스페셜티</option>
+                <option value="응급처치 교육">응급처치 교육</option>
+                <option value="이론교육">이론교육</option>
+                <option value="자유연습 및 펀다이빙">자유연습 및 펀다이빙</option>
+                <option value="정기 트레이닝">정기 트레이닝</option>
+                <option value="파라다이브">파라다이브</option>
+                <option value="해양투어">해양 투어</option>
+                `;
+
+            const leftEl = calendarEl.querySelector('.fc-toolbar-chunk:first-child');
+            leftEl.innerHTML = '';
+            leftEl.appendChild(centerSelect);
+            leftEl.appendChild(classSelect);
+
+            // 필터 동작 연결
+            centerSelect.addEventListener('change', () => applyFilters(calendar));
+            classSelect.addEventListener('change', () => applyFilters(calendar));
         });
+
     </script>
     <!-- ✅ 모달 팝업 HTML 추가 (body에 넣어줘야 해!) -->
     <div id="eventModal"
@@ -288,6 +404,33 @@ background:white; border-radius:10px; padding:20px; width:500px; box-shadow: 0 4
                 closeModal();
             }
         });
+
+        function applyFilters(calendar) {
+            const selectedCenter = document.getElementById('centerFilter').value;
+            const selectedClass = document.getElementById('classFilter').value;
+
+            const filtered = rawEvents.filter(event => {
+                const matchesCenter =
+                    selectedCenter === 'none' || event.extendedProps.center === selectedCenter;
+                const matchesClass =
+                    selectedClass === 'none' || event.title === selectedClass;
+
+                return matchesCenter && matchesClass;
+            });
+
+            const coloredEvents = filtered.map(event => ({
+                ...event,
+                display: 'block',
+                color: programColors[event.title] || '#cccccc',
+                textColor: '#000'
+            }));
+
+            calendar.removeAllEvents();
+            calendar.addEventSource(coloredEvents);
+        }
+
+
+
     </script>
 </body>
 
