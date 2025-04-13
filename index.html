@@ -2,89 +2,95 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FullCalendar Custom Filters</title>
 
-    <!-- FullCalendar CSS -->
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
-    <!-- FullCalendar JS -->
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
     <style>
         #calendar {
             max-width: 900px;
             margin: 40px auto;
         }
 
-        /* 이전/다음 버튼 배경색 변경 */
+        .fc-toolbar.fc-header-toolbar {
+            display: flex !important;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            height: 50px;
+        }
+
+        .fc-toolbar-title {
+            position: absolute !important;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            font-weight: bold;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 1;
+        }
+
         .fc-prev-button,
         .fc-next-button {
             background-color: #333 !important;
-            /* 원하는 색상으로 변경 */
+            color: white !important;
             border: none;
-            color: white;
             border-radius: 4px;
             padding: 6px 12px;
         }
 
-        /* 마우스 오버 시 색상 */
         .fc-prev-button:hover,
         .fc-next-button:hover {
             background-color: #777 !important;
         }
 
         .custom-filter {
-            height: 32px;
-            /* FullCalendar 기본 버튼 높이에 맞춤 */
+            height: 40px;
             background-color: #333;
-            border: none;
             color: white;
+            border: none;
             border-radius: 4px;
             padding: 4px 32px 4px 8px;
+            margin-right: 8px;
             appearance: none;
-            /* 기본 화살표 제거 */
-            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%22240%22%20height%3D%22240%22%20viewBox%3D%220%200%20240%20240%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M0%2030l120%20120L240%2030z%22%20fill%3D%22white%22/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='240' height='240' viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30l120 120L240 30z' fill='white'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 12px center;
-            /* ← 여기서 커서 오른쪽 여백 조절 */
             background-size: 10px;
+            font-size: 14px;
             cursor: pointer;
+        }
+
+        .fc-left-controls {
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-center {
+            padding: 6px 12px;
+            /* 상하 6px, 좌우 12px (기존보다 줄임) */
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            min-width: auto;
+            /* 필요 시 명시 */
+            max-width: 30%;
+            white-space: nowrap;
+            border: none;
+            font-size: 14px;
         }
     </style>
 </head>
 
 <body>
-    <div id='calendar'></div>
+    <div id="calendar"></div>
+
     <script>
-        function applyFilters(calendar) {
-            const selectedCenter = document.getElementById('centerFilter').value;
-            const selectedClass = document.getElementById('classFilter').value;
-
-            const filtered = rawEvents.filter(event => {
-                const matchesCenter =
-                    selectedCenter === 'none' || event.extendedProps.center === selectedCenter;
-                const matchesClass =
-                    selectedClass === 'none' || event.title === selectedClass;
-
-                return matchesCenter && matchesClass;
-            });
-            const coloredEvents = filtered.map(event => ({
-                ...event,
-                display: 'block',
-                color: programColors[event.title] || '#cccccc',
-                textColor: '#000'
-            }));
-
-            calendar.removeAllEvents();
-            calendar.addEventSource(coloredEvents);
-        }
-
-        const programDescriptions = {
-            '레벨테스트': '라이센스 취득을 위한 레벨테스트입니다.',
-            '이퀄 세미나': '압력균형 이해<br/>F-TUBE 이해<br/>압력기관 통제<br/>프렌젤 지상실행<br/>제한수역 실행<br/><br/>이론 교육장에서 이론 수업 먼저 진행됩니다.',
-            '세션교육': '최대 1:4 소규모 집중 교육으로 실력을 향상시켜 보세요.',
-        };
         const programColors = {
             '응급처치 교육': '#ffb572',
             '머메이드': '#ffac7e',
@@ -100,194 +106,114 @@
             '스페셜티': '#cedd90'
         };
 
+        const programDescriptions = {
+            '레벨테스트': '라이센스 취득을 위한 레벨테스트입니다.',
+            '이퀄 세미나': '압력균형 이해<br/>F-TUBE 이해<br/>압력기관 통제<br/>프렌젤 지상실행<br/>제한수역 실행<br/><br/>이론 교육장에서 이론 수업 먼저 진행됩니다.',
+            '세션교육': '최대 1:4 소규모 집중 교육으로 실력을 향상시켜 보세요.',
+        };
+
         const rawEvents = [
-            {
-                title: '레벨테스트',
-                start: '2025-04-02T10:00',
-                end: '2025-04-02T12:00',
-                extendedProps: {
-                    center: '일산',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
-                }
-            },
-            {
-                title: '레벨테스트',
-                start: '2025-04-06T14:00',
-                end: '2025-04-06T16:00',
-                extendedProps: {
-                    center: '일산',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
-                }
-            },
-            {
-                title: '레벨테스트',
-                start: '2025-04-08T19:30',
-                end: '2025-04-08T21:30',
-                extendedProps: {
-                    center: '일산',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
-                }
-            },
-            {
-                title: '레벨테스트',
-                start: '2025-04-13T14:00',
-                end: '2025-04-13T16:00',
-                extendedProps: {
-                    center: '일산',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
-                }
-            },
-            {
-                title: '레벨테스트',
-                start: '2025-04-15T12:00',
-                end: '2025-04-15T14:00',
-                extendedProps: {
-                    center: '일산',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
-                }
-            },
-            {
-                title: '레벨테스트',
-                start: '2025-04-24T19:30',
-                end: '2025-04-24T21:30',
-                extendedProps: {
-                    center: '일산',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
-                }
-            },
-
-
-
-            {
-                title: '이퀄 세미나',
-                start: '2025-04-10T19:00',
-                end: '2025-04-10T21:30',
-                extendedProps: {
-                    center: '일산',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                }
-            },
-            {
-                title: '이퀄 세미나',
-                start: '2025-04-19T13:00',
-                end: '2025-04-19T15:30',
-                extendedProps: {
-                    center: '일산',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                }
-            },
-            {
-                title: '이퀄 세미나',
-                start: '2025-04-22T17:00',
-                end: '2025-04-22T21:30',
-                extendedProps: {
-                    center: '일산',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                }
-            },
-            {
-                title: '이퀄 세미나',
-
-                start: '2025-04-27T09:00',
-                end: '2025-04-27T11:30',
-                extendedProps: {
-                    center: '일산',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                }
-            },
-
-
-
-
-            {
-                title: '세션교육',
-                start: '2025-04-03T19:00',
-                end: '2025-04-03T21:30',
-                extendedProps: {
-                    center: '잠실',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                }
-            },
-            {
-                title: '세션교육',
-                start: '2025-04-08T19:00',
-                end: '2025-04-08T21:30',
-                extendedProps: {
-                    center: '잠실',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                }
-            },
-            {
-                title: '세션교육',
-                start: '2025-04-17T19:00',
-                end: '2025-04-17T21:30',
-                extendedProps: {
-                    center: '잠실',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                }
-            },
-            {
-                title: '세션교육',
-                start: '2025-04-29T19:00',
-                end: '2025-04-29T21:30',
-                extendedProps: {
-                    center: '잠실',
-                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
-                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                }
-            },
+            { title: '레벨테스트', start: '2025-04-02T10:00', end: '2025-04-02T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?' } },
+            { title: '레벨테스트', start: '2025-04-06T14:00', end: '2025-04-06T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?' } },
+            { title: '레벨테스트', start: '2025-04-08T19:30', end: '2025-04-08T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?' } },
+            { title: '레벨테스트', start: '2025-04-13T14:00', end: '2025-04-13T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?' } },
+            { title: '레벨테스트', start: '2025-04-15T12:00', end: '2025-04-15T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?' } },
+            { title: '레벨테스트', start: '2025-04-24T19:30', end: '2025-04-24T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?' } },
+            { title: '이퀄 세미나', start: '2025-04-10T19:00', end: '2025-04-10T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
+            { title: '이퀄 세미나', start: '2025-04-19T13:00', end: '2025-04-19T15:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
+            { title: '이퀄 세미나', start: '2025-04-22T17:00', end: '2025-04-22T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
+            { title: '이퀄 세미나', start: '2025-04-27T09:00', end: '2025-04-27T11:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
+            { title: '세션교육', start: '2025-04-03T19:00', end: '2025-04-03T21:30', extendedProps: { center: '잠실', thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
+            { title: '세션교육', start: '2025-04-08T19:00', end: '2025-04-08T21:30', extendedProps: { center: '잠실', thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
+            { title: '세션교육', start: '2025-04-17T19:00', end: '2025-04-17T21:30', extendedProps: { center: '잠실', thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
+            { title: '세션교육', start: '2025-04-29T19:00', end: '2025-04-29T21:30', extendedProps: { center: '잠실', thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } }
         ];
+
         const events = rawEvents.map(event => ({
             ...event,
+            color: programColors[event.title] || '#ccc',
             display: 'block',
-            color: programColors[event.title] || '#cccccc', // 기본 색도 fallback
-            textColor: '#000', // 필요시
-        }))
+            textColor: '#000',
+        }));
 
+        function adjustWidthToSelected(selectEl) {
+            const temp = document.createElement("span");
+            const style = window.getComputedStyle(selectEl);
+            temp.style.position = "absolute";
+            temp.style.visibility = "hidden";
+            temp.style.whiteSpace = "nowrap";
+            temp.style.fontSize = style.fontSize;
+            temp.style.fontFamily = style.fontFamily;
+            temp.innerText = selectEl.options[selectEl.selectedIndex].text;
+            document.body.appendChild(temp);
+            selectEl.style.width = `${temp.offsetWidth + 40}px`;
+            document.body.removeChild(temp);
+        }
 
-        document.addEventListener('DOMContentLoaded', function () {
+        function applyFilters(calendar) {
+            const selectedCenter = document.getElementById('centerFilter').value;
+            const selectedClass = document.getElementById('classFilter').value;
+
+            const filtered = rawEvents.filter(event => {
+                const centerMatch = selectedCenter === 'none' || event.extendedProps.center === selectedCenter;
+                const classMatch = selectedClass === 'none' || event.title === selectedClass;
+                return centerMatch && classMatch;
+            });
+
+            calendar.removeAllEvents();
+            calendar.addEventSource(filtered.map(e => ({
+                ...e,
+                color: programColors[e.title] || '#ccc',
+                display: 'block',
+                textColor: '#000',
+            })));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
             const calendarEl = document.getElementById('calendar');
-            let calendar = new FullCalendar.Calendar(calendarEl, {
-                eventTimeFormat: {
-                    hour: 'numeric',
-                    minute: '2-digit',
-                    hour12: false
-                },
+
+            // 필터 박스 수동 생성
+            const centerSelect = document.createElement('select');
+            centerSelect.id = 'centerFilter';
+            centerSelect.className = 'custom-filter';
+            centerSelect.innerHTML = `
+  <option value="none" selected>전체 지점</option>
+  <option value="일산">일산</option>
+  <option value="잠실">잠실</option>
+  <option value="파라다이브">파라다이브</option>
+`;
+
+            const classSelect = document.createElement('select');
+            classSelect.id = 'classFilter';
+            classSelect.className = 'custom-filter';
+            classSelect.innerHTML = `
+  <option value="none" selected>전체 수업</option>
+  <option value="강사와 함께 펀다이빙">강사와 함께 펀다이빙</option>
+  <option value="레벨테스트">레벨테스트</option>
+  <option value="마스터 교육">마스터 교육</option>
+  <option value="마스터 트레이닝">마스터 트레이닝</option>
+  <option value="머메이드">머메이드</option>
+  <option value="세미나">세미나</option>
+  <option value="세션교육">세션교육</option>
+  <option value="스페셜티">스페셜티</option>
+  <option value="응급처치 교육">응급처치 교육</option>
+  <option value="이론교육">이론교육</option>
+  <option value="자유연습 및 펀다이빙">자유연습 및 펀다이빙</option>
+  <option value="정기 트레이닝">정기 트레이닝</option>
+  <option value="파라다이브">파라다이브</option>
+  <option value="해양투어">해양 투어</option>
+`;
+
+            // FullCalendar 생성
+            const calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 events: events,
                 headerToolbar: {
-                    left: 'centerFilterDropdown classFilterDropdown',// 필요 시 여기에 필터 버튼 추가 예정
+                    left: '',
                     center: 'title',
                     right: 'prev,next'
                 },
-                customButtons: {
-                    centerFilterDropdown: {
-                        text: '지점 ▼',
-                        click: () => { }
-                    },
-                    classFilterDropdown: {
-                        text: '수업 ▼',
-                        click: () => { }
-                    }
-                },
-                titleFormat: function (date) {
-                    const year = date.date.year;
-                    const month = String(date.date.month + 1).padStart(2, '0'); // 0~11이니까 +1
-                    return `${year}년 ${month}월`;
-                },
+                eventTimeFormat: { hour: '2-digit', minute: '2-digit', hour12: false },
                 eventClick: function (info) {
                     const props = info.event.extendedProps;
                     const title = info.event.title;
@@ -299,83 +225,96 @@
 
                     const description = programDescriptions[title] || '';
 
-                /*썸네일이미지*/document.querySelector(".modal-thumbnail").src = props.thumbnail || "";
-                /*지점명*/document.querySelector(".modal-center").innerText = info.event.extendedProps.center || '-';
-                /*프로그램명*/document.querySelector(".modal-program").innerText = props.program || info.event.title;
-                /*프로그램설명*/document.querySelector(".modal-description").innerHTML = description;
-                /*시간표시*/document.querySelector(".modal-time").innerText = `${startTime} ~ ${endTime}`;
-                /*예약링크*/document.querySelector(".modal-link").href = props.link || "#";
-                /*모달열기*/document.getElementById("eventModal").style.display = "block";
+                    // ✅ 버튼 내용, 색상 설정
+                    const centerBtn = document.querySelector(".modal-center");
+                    centerBtn.innerText = props.center || "-";
+
+                    if (props.center === '잠실') {
+                        centerBtn.style.backgroundColor = '#f06292'; // 분홍 (8호선)
+                    } else if (props.center === '일산') {
+                        centerBtn.style.backgroundColor = '#00bfa5'; // 청록 (경의중앙)
+                    } else if (props.center === '파라다이브') {
+                        centerBtn.style.backgroundColor = '#4fc3f7'; // 하늘 (4호선)
+                    } else {
+                        centerBtn.style.backgroundColor = 'gray';
+                    }
+
+                    // ✅ 모달 내용 설정
+                    document.querySelector(".modal-thumbnail").src = props.thumbnail || "";
+                    document.querySelector(".modal-program").innerText = title;
+                    document.querySelector(".modal-description").innerHTML = description;
+                    document.querySelector(".modal-time").innerText = `${startTime} ~ ${endTime}`;
+                    document.querySelector(".modal-link").href = props.link || "#";
+
+                    // ✅ 모달 열기
+                    document.getElementById("eventModal").style.display = "block";
                 }
             });
+
             calendar.render();
 
-            // 필터 드롭다운입
-            const centerSelect = document.createElement('select');
-            centerSelect.id = 'centerFilter';
-            centerSelect.classList.add('custom-filter');
-            centerSelect.innerHTML = `
-                <option value="none">전체 지점</option>
-                <option value="일산">일산</option>
-                <option value="잠실">잠실</option>
-                <option value="파라다이브">파라다이브</option>
-                `;
+            // 필터 DOM 수동 삽입
+            const fcToolbar = document.querySelector('.fc-toolbar.fc-header-toolbar');
+            const leftControls = document.createElement('div');
+            leftControls.className = 'fc-left-controls';
+            leftControls.appendChild(centerSelect);
+            leftControls.appendChild(classSelect);
+            fcToolbar.insertBefore(leftControls, fcToolbar.firstChild);
 
-            const classSelect = document.createElement('select');
-            classSelect.id = 'classFilter';
-            classSelect.classList.add('custom-filter');
-            classSelect.innerHTML = `
-                <option value="none">전체 수업</option>
-                <option value="강사와 함께 펀다이빙">강사와 함께 펀다이빙</option>
-                <option value="레벨테스트">레벨테스트</option>
-                <option value="마스터 교육">마스터 교육</option>
-                <option value="마스터 트레이닝">마스터 트레이닝</option>
-                <option value="머메이드">머메이드</option>
-                <option value="세미나">세미나</option>
-                <option value="세션교육">세션교육</option>
-                <option value="스페셜티">스페셜티</option>
-                <option value="응급처치 교육">응급처치 교육</option>
-                <option value="이론교육">이론교육</option>
-                <option value="자유연습 및 펀다이빙">자유연습 및 펀다이빙</option>
-                <option value="정기 트레이닝">정기 트레이닝</option>
-                <option value="파라다이브">파라다이브</option>
-                <option value="해양투어">해양 투어</option>
-                `;
+            // 초기 너비 설정
+            adjustWidthToSelected(centerSelect);
+            adjustWidthToSelected(classSelect);
 
-            const leftEl = calendarEl.querySelector('.fc-toolbar-chunk:first-child');
-            leftEl.innerHTML = '';
-            leftEl.appendChild(centerSelect);
-            leftEl.appendChild(classSelect);
+            // 이벤트 연결
+            centerSelect.addEventListener('change', () => {
+                applyFilters(calendar);
+                adjustWidthToSelected(centerSelect);
+            });
+            classSelect.addEventListener('change', () => {
+                applyFilters(calendar);
+                adjustWidthToSelected(classSelect);
+            });
 
-            // 필터 동작 연결
-            centerSelect.addEventListener('change', () => applyFilters(calendar));
-            classSelect.addEventListener('change', () => applyFilters(calendar));
+            // 초기 필터 적용
+            applyFilters(calendar);
         });
-
     </script>
-    <!-- ✅ 모달 팝업 HTML 추가 (body에 넣어줘야 해!) -->
+
+    <!-- 모달 팝업 -->
     <div id="eventModal"
         style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-background:white; border-radius:10px; padding:20px; width:500px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); z-index:9999; overflow: auto; position:fixed;">
+background:white; border-radius:10px; padding:20px; width:500px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); z-index:9999; overflow: auto; position:fixed;">
         <button onclick="closeModal()"
             style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">
             &times;
         </button>
         <!-- 상단: 이미지 + 설명을 flex로 나눔 -->
-        <div style="display:flex; height:300px;">
+        <div style="display:flex; height:250px;">
             <!-- 좌측 이미지 (50%) -->
             <div style="flex: 1; aspect-ratio: 1 /1 ; overflow:hidden; 
-                display: flex; justify-content: center; align-items: center; 
-                ">
+           display: flex; justify-content: center; align-items: center; 
+           ">
                 <img class="modal-thumbnail" src="" alt="썸네일 이미지"
                     style="max-width:100%; max-height:100%; object-fit: contain;">
                 <!-- src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200721_159%2F15953264531517Do2k_JPEG%2Flqi0OPV8gAVpbPK94U-8_E0u.jpg" -->
             </div>
 
             <!-- 우측 설명글 (50%) -->
-            <div style="flex: 1; padding:15px; box-sizing:border-box;overflow:auto; 
-            display: flex; flex-direction: column; justify-content: center; ">
-                <h3 class="modal-center" style="margin:0;">지점명</h3>
+            <div style="flex: 1; padding:15px; box-sizing:border-box; overflow:auto; 
+       display: flex; flex-direction: column; justify-content: flex-start; ">
+                <button class="modal-center" style="
+                margin: 0;
+                padding: 6px 14px;
+                border: none;
+                border-radius: 20px;
+                font-weight: bold;
+                font-size: 14px;
+                color: white;
+                background-color: gray; /* 기본값 */
+                pointer-events: none;
+              ">
+                    지점명
+                </button>
                 <h3 class="modal-program" style="margin:20px 0 0 0;">프로그램명</h3>
                 <p class="modal-description" style="margin:8px 0 0 0; font-size:14px; color:#333;">프로그램 설명</p>
                 <h3 style="margin:20px 0 0 0;">수업 시간</h3>
@@ -428,10 +367,8 @@ background:white; border-radius:10px; padding:20px; width:500px; box-shadow: 0 4
             calendar.removeAllEvents();
             calendar.addEventSource(coloredEvents);
         }
-
-
-
     </script>
+
 </body>
 
 </html>
