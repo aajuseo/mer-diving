@@ -22,29 +22,195 @@
 <body>
     <div id='calendar'></div>
     <script>
+        const programDescriptions = {
+            '레벨테스트': '라이센스 취득을 위한 레벨테스트입니다.',
+            '이퀄 세미나': '압력균형 이해<br/>F-TUBE 이해<br/>압력기관 통제<br/>프렌젤 지상실행<br/>제한수역 실행<br/><br/>이론 교육장에서 이론 수업 먼저 진행됩니다.',
+            '세션교육': '최대 1:4 소규모 집중 교육으로 실력을 향상시켜 보세요.',
+        };
+
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: '',// 필요 시 여기에 필터 버튼 추가 예정
+                    center: 'title',
+                    right: 'prev,next'
+                },
+                titleFormat: function (date) {
+                    const year = date.date.year;
+                    const month = String(date.date.month + 1).padStart(2, '0'); // 0~11이니까 +1
+                    return `${year}년 ${month}월`;
+                },
                 events: [
                     {
-                        title: '회의',
-                        start: '2025-04-20',
+                        title: '레벨테스트',
+                        start: '2025-04-02T10:00',
+                        end: '2025-04-02T12:00',
+                        extendedProps: {
+                            center: '일산',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
+                        }
                     },
                     {
-                        title: '세미나',
-                        start: '2025-04-21',
-                        end: '2025-04-23'
-                    }
+                        title: '레벨테스트',
+                        start: '2025-04-06T14:00',
+                        end: '2025-04-06T16:00',
+                        extendedProps: {
+                            center: '일산',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
+                        }
+                    },
+                    {
+                        title: '레벨테스트',
+                        start: '2025-04-08T19:30',
+                        end: '2025-04-08T21:30',
+                        extendedProps: {
+                            center: '일산',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
+                        }
+                    },
+                    {
+                        title: '레벨테스트',
+                        start: '2025-04-13T14:00',
+                        end: '2025-04-13T16:00',
+                        extendedProps: {
+                            center: '일산',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
+                        }
+                    },
+                    {
+                        title: '레벨테스트',
+                        start: '2025-04-15T12:00',
+                        end: '2025-04-15T14:00',
+                        extendedProps: {
+                            center: '일산',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
+                        }
+                    },
+                    {
+                        title: '레벨테스트',
+                        start: '2025-04-24T19:30',
+                        end: '2025-04-24T21:30',
+                        extendedProps: {
+                            center: '일산',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
+                        }
+                    },
+
+
+
+                    {
+                        title: '이퀄 세미나',
+                        start: '2025-04-10T19:00',
+                        end: '2025-04-10T21:30',
+                        extendedProps: {
+                            center: '일산',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                        }
+                    },
+                    {
+                        title: '이퀄 세미나',
+                        start: '2025-04-19T13:00',
+                        end: '2025-04-19T15:30',
+                        extendedProps: {
+                            center: '일산',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                        }
+                    },
+                    {
+                        title: '이퀄 세미나',
+                        start: '2025-04-22T17:00',
+                        end: '2025-04-22T21:30',
+                        extendedProps: {
+                            center: '일산',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                        }
+                    },
+                    {
+                        title: '이퀄 세미나',
+
+                        start: '2025-04-27T09:00',
+                        end: '2025-04-27T11:30',
+                        extendedProps: {
+                            center: '일산',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                        }
+                    },
+
+
+
+
+                    {
+                        title: '세션교육',
+                        start: '2025-04-03T19:00',
+                        end: '2025-04-03T21:30',
+                        extendedProps: {
+                            center: '잠실',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                        }
+                    },
+                    {
+                        title: '세션교육',
+                        start: '2025-04-08T19:00',
+                        end: '2025-04-08T21:30',
+                        extendedProps: {
+                            center: '잠실',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                        }
+                    },
+                    {
+                        title: '세션교육',
+                        start: '2025-04-17T19:00',
+                        end: '2025-04-17T21:30',
+                        extendedProps: {
+                            center: '잠실',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                        }
+                    },
+                    {
+                        title: '세션교육',
+                        start: '2025-04-29T19:00',
+                        end: '2025-04-29T21:30',
+                        extendedProps: {
+                            center: '잠실',
+                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
+                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                        }
+                    },
                 ],
-                dateClick: function (info) {
-                    alert('날짜 클릭됨: ' + info.dateStr);
-                },
                 eventClick: function (info) {
-                    // 모달 표시
-                    var modal = document.getElementById("eventModal");
-                    modal.style.display = "block";
+                    const props = info.event.extendedProps;
+                    const title = info.event.title;
+
+                    const start = new Date(info.event.start);
+                    const end = new Date(info.event.end);
+                    const startTime = start.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+                    const endTime = end.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+
+                    const description = programDescriptions[title] || '';
+
+                    /*썸네일이미지*/document.querySelector(".modal-thumbnail").src = props.thumbnail || "";
+                    /*지점명*/document.querySelector(".modal-center").innerText = info.event.extendedProps.center || '-';
+                    /*프로그램명*/document.querySelector(".modal-program").innerText = props.program || info.event.title;
+                    /*프로그램설명*/document.querySelector(".modal-description").innerHTML = description;
+                    /*시간표시*/document.querySelector(".modal-time").innerText = `${startTime} ~ ${endTime}`;
+                    /*예약링크*/document.querySelector(".modal-link").href = props.link || "#";
+                    /*모달열기*/document.getElementById("eventModal").style.display = "block";
                 }
             });
 
@@ -54,52 +220,52 @@
     <!-- ✅ 모달 팝업 HTML 추가 (body에 넣어줘야 해!) -->
     <div id="eventModal"
         style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-background:white; border-radius:10px; padding:20px; width:500px; box-shadow:0 4px 20px rgba(0,0,0,0.2); z-index:9999; overflow: auto;">
-
+background:white; border-radius:10px; padding:20px; width:500px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); z-index:9999; overflow: auto; position:fixed;">
+        <button onclick="closeModal()"
+            style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">
+            &times;
+        </button>
         <!-- 상단: 이미지 + 설명을 flex로 나눔 -->
         <div style="display:flex; height:300px;">
             <!-- 좌측 이미지 (50%) -->
             <div style="flex: 1; aspect-ratio: 1 /1 ; overflow:hidden; 
                 display: flex; justify-content: center; align-items: center; 
                 ">
-                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200721_159%2F15953264531517Do2k_JPEG%2Flqi0OPV8gAVpbPK94U-8_E0u.jpg"
-                    alt="설명 이미지" style="max-width:100%; max-height:100%; object-fit: contain;">
+                <img class="modal-thumbnail" src="" alt="썸네일 이미지"
+                    style="max-width:100%; max-height:100%; object-fit: contain;">
+                <!-- src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200721_159%2F15953264531517Do2k_JPEG%2Flqi0OPV8gAVpbPK94U-8_E0u.jpg" -->
             </div>
 
             <!-- 우측 설명글 (50%) -->
             <div style="flex: 1; padding:15px; box-sizing:border-box;overflow:auto; 
             display: flex; flex-direction: column; justify-content: center; ">
-                <h3 style="margin:0;">세션교육</h3>
-                <p style="margin:8px 0 0 0; font-size:14px; color:#333;">
-                    메르 회원을 대상으로 한<br>최대 1:4 의 수준 높은 교육 제공
-                </p>
-                <h3 style="margin:20px 0 0 0;">시간</h3>
-                <p style="margin:8px 0 0 0; font-size:14px; color:#333;">am10:00 ~ pm12:00</p>
+                <h3 class="modal-center" style="margin:0;">지점명</h3>
+                <h3 class="modal-program" style="margin:20px 0 0 0;">프로그램명</h3>
+                <p class="modal-description" style="margin:8px 0 0 0; font-size:14px; color:#333;">프로그램 설명</p>
+                <h3 style="margin:20px 0 0 0;">수업 시간</h3>
+                <p class="modal-time" style="margin:8px 0 0 0; font-size:14px; color:#333;">시작시간 ~ 종료시간</p>
             </div>
         </div>
 
         <!-- 하단: 버튼 -->
         <div style="text-align:center; margin-top: 30px;">
-            <a href="https://booking.naver.com/booking/12/bizes/281683/items/5281048?" target="_blank"
+            <a class="modal-link" href="#" target="_blank"
                 style="display:inline-block; padding:10px 20px; background:#1ec800; color:white; border-radius:5px; text-decoration:none;">
                 예약하기
             </a>
         </div>
     </div>
 
-    <!-- 모달 외부 클릭 시 닫히게 하려면 아래도 body 끝에 넣어줘 -->
+    <!-- 모달 닫기 동작 -->
     <script>
-        window.addEventListener('click', function (e) {
-            var modal = document.getElementById('eventModal');
-            if (e.target == modal) {
-                modal.style.display = "none";
-            }
-        });
+        function closeModal() {
+            document.getElementById("eventModal").style.display = "none";
+        }
 
         // ESC 키로 닫기
         document.addEventListener('keydown', function (e) {
             if (e.key === "Escape") {
-                document.getElementById("eventModal").style.display = "none";
+                closeModal();
             }
         });
     </script>
