@@ -27,12 +27,183 @@
             '이퀄 세미나': '압력균형 이해<br/>F-TUBE 이해<br/>압력기관 통제<br/>프렌젤 지상실행<br/>제한수역 실행<br/><br/>이론 교육장에서 이론 수업 먼저 진행됩니다.',
             '세션교육': '최대 1:4 소규모 집중 교육으로 실력을 향상시켜 보세요.',
         };
+        const programColors = {
+            '응급처치 교육': '#ffb572',
+            '머메이드': '#ffac7e',
+            '이퀄 세미나': '#ff9980',
+            '강사와 함께 펀다이빙': '#f08984',
+            '마스터 교육': '#f2a7b6',
+            '마스터 트레이닝': '#e4acd1',
+            '세션교육': '#cdb9eb',
+            '정기 트레이닝': '#a8bce5',
+            '파라다이브': '#99c6e0',
+            '해양투어': '#a5e0c1',
+            '레벨테스트': '#bfe39d',
+            '스페셜티': '#cedd90'
+        };
+
+        const rawEvents = [
+            {
+                title: '레벨테스트',
+                start: '2025-04-02T10:00',
+                end: '2025-04-02T12:00',
+                extendedProps: {
+                    center: '일산',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
+                }
+            },
+            {
+                title: '레벨테스트',
+                start: '2025-04-06T14:00',
+                end: '2025-04-06T16:00',
+                extendedProps: {
+                    center: '일산',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
+                }
+            },
+            {
+                title: '레벨테스트',
+                start: '2025-04-08T19:30',
+                end: '2025-04-08T21:30',
+                extendedProps: {
+                    center: '일산',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
+                }
+            },
+            {
+                title: '레벨테스트',
+                start: '2025-04-13T14:00',
+                end: '2025-04-13T16:00',
+                extendedProps: {
+                    center: '일산',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
+                }
+            },
+            {
+                title: '레벨테스트',
+                start: '2025-04-15T12:00',
+                end: '2025-04-15T14:00',
+                extendedProps: {
+                    center: '일산',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
+                }
+            },
+            {
+                title: '레벨테스트',
+                start: '2025-04-24T19:30',
+                end: '2025-04-24T21:30',
+                extendedProps: {
+                    center: '일산',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
+                }
+            },
+
+
+
+            {
+                title: '이퀄 세미나',
+                start: '2025-04-10T19:00',
+                end: '2025-04-10T21:30',
+                extendedProps: {
+                    center: '일산',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                }
+            },
+            {
+                title: '이퀄 세미나',
+                start: '2025-04-19T13:00',
+                end: '2025-04-19T15:30',
+                extendedProps: {
+                    center: '일산',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                }
+            },
+            {
+                title: '이퀄 세미나',
+                start: '2025-04-22T17:00',
+                end: '2025-04-22T21:30',
+                extendedProps: {
+                    center: '일산',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                }
+            },
+            {
+                title: '이퀄 세미나',
+
+                start: '2025-04-27T09:00',
+                end: '2025-04-27T11:30',
+                extendedProps: {
+                    center: '일산',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                }
+            },
+
+
+
+
+            {
+                title: '세션교육',
+                start: '2025-04-03T19:00',
+                end: '2025-04-03T21:30',
+                extendedProps: {
+                    center: '잠실',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                }
+            },
+            {
+                title: '세션교육',
+                start: '2025-04-08T19:00',
+                end: '2025-04-08T21:30',
+                extendedProps: {
+                    center: '잠실',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                }
+            },
+            {
+                title: '세션교육',
+                start: '2025-04-17T19:00',
+                end: '2025-04-17T21:30',
+                extendedProps: {
+                    center: '잠실',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                }
+            },
+            {
+                title: '세션교육',
+                start: '2025-04-29T19:00',
+                end: '2025-04-29T21:30',
+                extendedProps: {
+                    center: '잠실',
+                    thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
+                    link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
+                }
+            },
+        ];
+        const events = rawEvents.map(event => ({
+            ...event,
+            display: 'block',
+            color: programColors[event.title] || '#cccccc', // 기본 색도 fallback
+            textColor: '#000', // 필요시
+        }))
+
 
         document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
+            const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
                 initialView: 'dayGridMonth',
+                events: events,
                 headerToolbar: {
                     left: '',// 필요 시 여기에 필터 버튼 추가 예정
                     center: 'title',
@@ -43,156 +214,6 @@
                     const month = String(date.date.month + 1).padStart(2, '0'); // 0~11이니까 +1
                     return `${year}년 ${month}월`;
                 },
-                events: [
-                    {
-                        title: '레벨테스트',
-                        start: '2025-04-02T10:00',
-                        end: '2025-04-02T12:00',
-                        extendedProps: {
-                            center: '일산',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
-                        }
-                    },
-                    {
-                        title: '레벨테스트',
-                        start: '2025-04-06T14:00',
-                        end: '2025-04-06T16:00',
-                        extendedProps: {
-                            center: '일산',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
-                        }
-                    },
-                    {
-                        title: '레벨테스트',
-                        start: '2025-04-08T19:30',
-                        end: '2025-04-08T21:30',
-                        extendedProps: {
-                            center: '일산',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
-                        }
-                    },
-                    {
-                        title: '레벨테스트',
-                        start: '2025-04-13T14:00',
-                        end: '2025-04-13T16:00',
-                        extendedProps: {
-                            center: '일산',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
-                        }
-                    },
-                    {
-                        title: '레벨테스트',
-                        start: '2025-04-15T12:00',
-                        end: '2025-04-15T14:00',
-                        extendedProps: {
-                            center: '일산',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
-                        }
-                    },
-                    {
-                        title: '레벨테스트',
-                        start: '2025-04-24T19:30',
-                        end: '2025-04-24T21:30',
-                        extendedProps: {
-                            center: '일산',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20241120_80/1732085926541IcMn8_PNG/VID_20241103_164655_032.png?type=w1500',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253679/?'
-                        }
-                    },
-
-
-
-                    {
-                        title: '이퀄 세미나',
-                        start: '2025-04-10T19:00',
-                        end: '2025-04-10T21:30',
-                        extendedProps: {
-                            center: '일산',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                        }
-                    },
-                    {
-                        title: '이퀄 세미나',
-                        start: '2025-04-19T13:00',
-                        end: '2025-04-19T15:30',
-                        extendedProps: {
-                            center: '일산',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                        }
-                    },
-                    {
-                        title: '이퀄 세미나',
-                        start: '2025-04-22T17:00',
-                        end: '2025-04-22T21:30',
-                        extendedProps: {
-                            center: '일산',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                        }
-                    },
-                    {
-                        title: '이퀄 세미나',
-
-                        start: '2025-04-27T09:00',
-                        end: '2025-04-27T11:30',
-                        extendedProps: {
-                            center: '일산',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                        }
-                    },
-
-
-
-
-                    {
-                        title: '세션교육',
-                        start: '2025-04-03T19:00',
-                        end: '2025-04-03T21:30',
-                        extendedProps: {
-                            center: '잠실',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                        }
-                    },
-                    {
-                        title: '세션교육',
-                        start: '2025-04-08T19:00',
-                        end: '2025-04-08T21:30',
-                        extendedProps: {
-                            center: '잠실',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                        }
-                    },
-                    {
-                        title: '세션교육',
-                        start: '2025-04-17T19:00',
-                        end: '2025-04-17T21:30',
-                        extendedProps: {
-                            center: '잠실',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                        }
-                    },
-                    {
-                        title: '세션교육',
-                        start: '2025-04-29T19:00',
-                        end: '2025-04-29T21:30',
-                        extendedProps: {
-                            center: '잠실',
-                            thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg',
-                            link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00'
-                        }
-                    },
-                ],
                 eventClick: function (info) {
                     const props = info.event.extendedProps;
                     const title = info.event.title;
@@ -204,16 +225,15 @@
 
                     const description = programDescriptions[title] || '';
 
-                    /*썸네일이미지*/document.querySelector(".modal-thumbnail").src = props.thumbnail || "";
-                    /*지점명*/document.querySelector(".modal-center").innerText = info.event.extendedProps.center || '-';
-                    /*프로그램명*/document.querySelector(".modal-program").innerText = props.program || info.event.title;
-                    /*프로그램설명*/document.querySelector(".modal-description").innerHTML = description;
-                    /*시간표시*/document.querySelector(".modal-time").innerText = `${startTime} ~ ${endTime}`;
-                    /*예약링크*/document.querySelector(".modal-link").href = props.link || "#";
-                    /*모달열기*/document.getElementById("eventModal").style.display = "block";
+                /*썸네일이미지*/document.querySelector(".modal-thumbnail").src = props.thumbnail || "";
+                /*지점명*/document.querySelector(".modal-center").innerText = info.event.extendedProps.center || '-';
+                /*프로그램명*/document.querySelector(".modal-program").innerText = props.program || info.event.title;
+                /*프로그램설명*/document.querySelector(".modal-description").innerHTML = description;
+                /*시간표시*/document.querySelector(".modal-time").innerText = `${startTime} ~ ${endTime}`;
+                /*예약링크*/document.querySelector(".modal-link").href = props.link || "#";
+                /*모달열기*/document.getElementById("eventModal").style.display = "block";
                 }
             });
-
             calendar.render();
         });
     </script>
