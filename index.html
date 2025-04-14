@@ -11,7 +11,7 @@
 
     <style>
         #calendar {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 40px auto;
         }
 
@@ -92,24 +92,26 @@
 
     <script>
         const programColors = {
-            '응급처치 교육': '#ffb572',
-            '머메이드': '#ffac7e',
-            '이퀄 세미나': '#ff9980',
-            '강사와 함께 펀다이빙': '#f08984',
-            '마스터 교육': '#f2a7b6',
-            '마스터 트레이닝': '#e4acd1',
-            '세션교육': '#cdb9eb',
-            '정기 트레이닝': '#a8bce5',
-            '파라다이브': '#99c6e0',
-            '해양투어': '#a5e0c1',
-            '레벨테스트': '#bfe39d',
-            '스페셜티': '#cedd90'
+            '펀다이빙': '#e4edb4',
+            '레벨테스트': '#daf0d8',
+            '마스터 교육': '#f5ced1',
+            '마스터 트레이닝': '#f7dff3',
+            '머메이드': '#ffd4c7',
+            '이퀄 세미나': '#ebcce9',
+            '세션 교육': '#def0eb',
+            '스페셜티': '#e9f7c6',
+            '응급처치 교육': '#fed8b3',
+            '이론교육': '#fff8c3',
+            '강사와 함께 펀다이빙': '#c0e0b1',
+            '정기 트레이닝': '#cde4f7',
+            '파라다이브': '#ceddf2',
+            '해양투어': '#d6f2e6',
         };
 
         const programDescriptions = {
             '레벨테스트': '라이센스 취득을 위한 레벨테스트입니다.',
             '이퀄 세미나': '압력균형 이해<br/>F-TUBE 이해<br/>압력기관 통제<br/>프렌젤 지상실행<br/>제한수역 실행<br/><br/>이론 교육장에서 이론 수업 먼저 진행됩니다.',
-            '세션교육': '최대 1:4 소규모 집중 교육으로 실력을 향상시켜 보세요.',
+            '세션 교육': '최대 1:4 소규모 집중 교육으로 실력을 향상시켜 보세요.',
         };
 
         const rawEvents = [
@@ -125,12 +127,6 @@
             { title: '이퀄 세미나', start: '2025-04-19T13:00', end: '2025-04-19T15:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
             { title: '이퀄 세미나', start: '2025-04-22T17:00', end: '2025-04-22T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
             { title: '이퀄 세미나', start: '2025-04-27T09:00', end: '2025-04-27T11:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20231102_297/1698895108805wCigl_PNG/GOPR0731.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5661046/?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
-            { title: '세션교육', start: '2025-04-03T19:00', end: '2025-04-03T21:30', extendedProps: { center: '잠실', thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
-            { title: '세션교육', start: '2025-04-08T19:00', end: '2025-04-08T21:30', extendedProps: { center: '잠실', thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
-            { title: '세션교육', start: '2025-04-17T19:00', end: '2025-04-17T21:30', extendedProps: { center: '잠실', thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
-            { title: '세션교육', start: '2025-04-29T19:00', end: '2025-04-29T21:30', extendedProps: { center: '잠실', thumbnail: 'https://naverbooking-phinf.pstatic.net/20250330_231/17433045516359pHMv_JPEG/KakaoTalk_20210511_155613417_01_%281%29.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?preview=1&startDateTime=2025-04-14T00%3A00%3A00%2B09%3A00' } },
-            { title: '강사와 함께 펀다이빙', start: '2025-04-02T19:30', end: '2025-04-02T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20240226_49/1708928034046GB1Ne_JPEG/GPTempDownload.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?' } },
-            { title: '강사와 함께 펀다이빙', start: '2025-04-17T19:00', end: '2025-04-17T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20240226_49/1708928034046GB1Ne_JPEG/GPTempDownload.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281109?' } },
             { title: '마스터 교육 2', start: '2025-04-05T10:00', end: '2025-04-05T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_61/1692579541959WYo9N_JPEG/KakaoTalk_20220407_190420235_03.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281104?' } },
             { title: '마스터 교육 1', start: '2025-04-06T10:00', end: '2025-04-06T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_61/1692579541959WYo9N_JPEG/KakaoTalk_20220407_190420235_03.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281104?' } },
             { title: '마스터 교육 3', start: '2025-04-09T19:30', end: '2025-04-09T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_61/1692579541959WYo9N_JPEG/KakaoTalk_20220407_190420235_03.jpg', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281104?' } },
@@ -235,14 +231,186 @@
             { title: '2레벨 이론교육', start: '2025-04-16T19:00', end: '2025-04-05T22:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://cafe.naver.com/merfd/24569' } },
             { title: '2레벨 이론교육', start: '2025-04-26T10:00', end: '2025-04-05T13:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://cafe.naver.com/merfd/24569' } },
             { title: '2레벨 이론교육', start: '2025-04-29T19:00', end: '2025-04-05T22:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://cafe.naver.com/merfd/24569' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-01T17:30', end: '2025-04-01T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-01T19:30', end: '2025-04-01T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-02T17:30', end: '2025-04-02T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-03T17:30', end: '2025-04-03T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-04T12:00', end: '2025-04-04T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-04T16:00', end: '2025-04-04T18:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-05T10:00', end: '2025-04-05T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-06T08:00', end: '2025-04-06T10:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-07T10:00', end: '2025-04-07T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-08T12:00', end: '2025-04-08T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-09T12:00', end: '2025-04-09T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-10T12:00', end: '2025-04-10T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-11T17:30', end: '2025-04-11T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-13T10:00', end: '2025-04-13T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-14T10:00', end: '2025-04-14T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-15T17:30', end: '2025-04-15T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-16T08:00', end: '2025-04-16T10:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-18T12:00', end: '2025-04-18T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-19T10:00', end: '2025-04-19T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-20T12:00', end: '2025-04-20T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-21T08:00', end: '2025-04-21T10:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-22T12:00', end: '2025-04-22T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-23T17:30', end: '2025-04-23T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-25T17:30', end: '2025-04-25T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-27T10:00', end: '2025-04-27T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(초급)', start: '2025-04-29T10:00', end: '2025-04-29T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230821_81/16925794584703KsHA_PNG/%C1%A4%B1%E2%C6%AE%B7%B9%C0%CC%B4%D701.png', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253542/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-01T12:00', end: '2025-04-01T14:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-02T12:00', end: '2025-04-02T14:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-03T12:00', end: '2025-04-03T14:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-04T08:00', end: '2025-04-04T10:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-05T08:00', end: '2025-04-05T10:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-06T08:00', end: '2025-04-06T10:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-06T14:00', end: '2025-04-06T16:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-07T17:30', end: '2025-04-07T19:30', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-08T12:00', end: '2025-04-08T14:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-09T10:00', end: '2025-04-09T12:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-10T08:00', end: '2025-04-10T10:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-11T08:00', end: '2025-04-11T10:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-13T08:00', end: '2025-04-13T10:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-14T12:00', end: '2025-04-14T14:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-15T12:00', end: '2025-04-15T14:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-16T10:00', end: '2025-04-16T12:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-17T10:00', end: '2025-04-17T12:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-18T08:00', end: '2025-04-18T10:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-20T08:00', end: '2025-04-20T10:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-21T08:00', end: '2025-04-21T10:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-22T10:00', end: '2025-04-22T12:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-23T10:00', end: '2025-04-23T12:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-24T10:00', end: '2025-04-24T12:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-25T10:00', end: '2025-04-25T12:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-27T08:00', end: '2025-04-27T10:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-28T12:00', end: '2025-04-28T14:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-29T10:00', end: '2025-04-29T12:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '정기 트레이닝(중급)', start: '2025-04-30T10:00', end: '2025-04-30T12:00', extendedProps: { center: '일산', thumbnail: '', link: 'https://booking.naver.com/booking/12/bizes/281683/items/6253391/?preview=1' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-01T10:00', end: '2025-04-01T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-01T12:00', end: '2025-04-01T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-01T17:30', end: '2025-04-01T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-01T19:30', end: '2025-04-01T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-02T10:00', end: '2025-04-02T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-02T12:00', end: '2025-04-02T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-02T17:30', end: '2025-04-02T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-03T10:00', end: '2025-04-03T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-03T12:00', end: '2025-04-03T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-03T14:00', end: '2025-04-03T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-03T17:30', end: '2025-04-03T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-03T19:30', end: '2025-04-03T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-04T10:00', end: '2025-04-04T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-04T12:00', end: '2025-04-04T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-04T17:30', end: '2025-04-04T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-04T19:30', end: '2025-04-04T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-05T08:00', end: '2025-04-05T10:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-05T14:00', end: '2025-04-05T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-05T16:00', end: '2025-04-05T18:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-06T14:00', end: '2025-04-06T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-06T16:00', end: '2025-04-06T18:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-07T10:00', end: '2025-04-07T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-07T12:00', end: '2025-04-07T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-07T17:30', end: '2025-04-07T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-07T19:30', end: '2025-04-07T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-08T10:00', end: '2025-04-08T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-08T12:00', end: '2025-04-08T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-08T17:30', end: '2025-04-08T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-08T19:30', end: '2025-04-08T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-09T10:00', end: '2025-04-09T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-09T12:00', end: '2025-04-09T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-09T14:00', end: '2025-04-09T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-09T17:30', end: '2025-04-09T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-09T19:30', end: '2025-04-09T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-10T10:00', end: '2025-04-10T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-10T12:00', end: '2025-04-10T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-10T17:30', end: '2025-04-10T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-11T10:00', end: '2025-04-11T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-11T12:00', end: '2025-04-11T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-12T08:00', end: '2025-04-12T10:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-12T14:00', end: '2025-04-12T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-12T16:00', end: '2025-04-12T18:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-13T14:00', end: '2025-04-13T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-13T16:00', end: '2025-04-13T18:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-14T10:00', end: '2025-04-14T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-14T12:00', end: '2025-04-14T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-14T17:30', end: '2025-04-14T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-14T19:30', end: '2025-04-14T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-15T10:00', end: '2025-04-15T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-15T12:00', end: '2025-04-15T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-15T14:00', end: '2025-04-15T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-15T17:30', end: '2025-04-15T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-15T19:30', end: '2025-04-15T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-16T10:00', end: '2025-04-16T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-16T12:00', end: '2025-04-16T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-16T17:30', end: '2025-04-16T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-16T19:30', end: '2025-04-16T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-17T10:00', end: '2025-04-17T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-17T12:00', end: '2025-04-17T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-17T17:30', end: '2025-04-17T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-18T10:00', end: '2025-04-18T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-18T12:00', end: '2025-04-18T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-18T17:30', end: '2025-04-18T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-18T19:30', end: '2025-04-18T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-19T08:00', end: '2025-04-19T10:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-19T14:00', end: '2025-04-19T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-19T16:00', end: '2025-04-19T18:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-20T14:00', end: '2025-04-20T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-20T16:00', end: '2025-04-20T18:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-21T10:00', end: '2025-04-21T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-21T12:00', end: '2025-04-21T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-21T17:30', end: '2025-04-21T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-21T19:30', end: '2025-04-21T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-22T10:00', end: '2025-04-22T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-22T12:00', end: '2025-04-22T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-22T17:30', end: '2025-04-22T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-22T19:30', end: '2025-04-22T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-23T10:00', end: '2025-04-23T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-23T12:00', end: '2025-04-23T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-23T17:30', end: '2025-04-23T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-23T19:30', end: '2025-04-23T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-24T10:00', end: '2025-04-24T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-24T12:00', end: '2025-04-24T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-24T17:30', end: '2025-04-24T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-25T10:00', end: '2025-04-25T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-25T12:00', end: '2025-04-25T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-25T14:00', end: '2025-04-25T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-25T17:30', end: '2025-04-25T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-26T08:00', end: '2025-04-26T10:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-26T14:00', end: '2025-04-26T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-26T16:00', end: '2025-04-26T18:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-27T14:00', end: '2025-04-27T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-28T10:00', end: '2025-04-28T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-28T12:00', end: '2025-04-28T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-28T17:30', end: '2025-04-28T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-28T19:30', end: '2025-04-28T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-29T10:00', end: '2025-04-29T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-29T12:00', end: '2025-04-29T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-29T17:30', end: '2025-04-29T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-30T10:00', end: '2025-04-30T12:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-30T12:00', end: '2025-04-30T14:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-30T14:00', end: '2025-04-30T16:00', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-30T17:30', end: '2025-04-30T19:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '강사와 함께 펀다이빙', start: '2025-04-30T19:30', end: '2025-04-30T21:30', extendedProps: { center: '일산', thumbnail: 'https://naverbooking-phinf.pstatic.net/20230905_118/1693901767759rWC3w_JPEG/IMG_3752.JPG', link: 'https://booking.naver.com/booking/12/bizes/281683/items/5281073' } },
+            { title: '파라다이브 세션교육&펀다이빙', start: '2025-04-02T11:00', end: '2025-04-02T14:00', extendedProps: { center: '파라다이브', thumbnail: '', link: 'https://cafe.naver.com/merfd/25138' } },
+            { title: '파라다이브 세션교육&펀다이빙', start: '2025-04-09T20:00', end: '2025-04-09T23:00', extendedProps: { center: '파라다이브', thumbnail: '', link: 'https://cafe.naver.com/merfd/25138' } },
+            { title: '파라다이브 세션교육&펀다이빙', start: '2025-04-15T11:00', end: '2025-04-15T14:00', extendedProps: { center: '파라다이브', thumbnail: '', link: 'https://cafe.naver.com/merfd/25138' } },
+            { title: '파라다이브 세션교육&펀다이빙', start: '2025-04-16T14:00', end: '2025-04-16T17:00', extendedProps: { center: '파라다이브', thumbnail: '', link: 'https://cafe.naver.com/merfd/25138' } },
+            { title: '파라다이브 세션교육&펀다이빙', start: '2025-04-22T11:00', end: '2025-04-22T14:00', extendedProps: { center: '파라다이브', thumbnail: '', link: 'https://cafe.naver.com/merfd/25138' } },
+            { title: '파라다이브 세션교육&펀다이빙', start: '2025-04-24T20:00', end: '2025-04-24T23:00', extendedProps: { center: '파라다이브', thumbnail: '', link: 'https://cafe.naver.com/merfd/25138' } },
+            { title: '파라다이브 세션교육&펀다이빙', start: '2025-04-26T11:00', end: '2025-04-26T14:00', extendedProps: { center: '파라다이브', thumbnail: '', link: 'https://cafe.naver.com/merfd/25138' } },
+            { title: '파라다이브 세션교육&펀다이빙', start: '2025-04-26T14:00', end: '2025-04-26T17:00', extendedProps: { center: '파라다이브', thumbnail: '', link: 'https://cafe.naver.com/merfd/25138' } },
+            { title: '파라다이브 세션교육&펀다이빙', start: '2025-04-29T11:00', end: '2025-04-29T14:00', extendedProps: { center: '파라다이브', thumbnail: '', link: 'https://cafe.naver.com/merfd/25138' } },
+            { title: '파라다이브 세션교육&펀다이빙', start: '2025-04-29T14:00', end: '2025-04-29T17:00', extendedProps: { center: '파라다이브', thumbnail: '', link: 'https://cafe.naver.com/merfd/25138' } },
+
         ];
 
-        const events = rawEvents.map(event => ({
-            ...event,
-            color: programColors[event.title] || '#ccc',
-            display: 'block',
-            textColor: '#000',
-        }));
+        const events = rawEvents.map(event => {
+            const matchedKey = Object.keys(programColors).find(key => event.title.includes(key));
+            return {
+                ...event,
+                color: getProgramColor(event.title),
+                display: 'block',
+                textColor: '#000',
+            };
+        });
 
         function adjustWidthToSelected(selectEl) {
             const temp = document.createElement("span");
@@ -258,13 +426,29 @@
             document.body.removeChild(temp);
         }
 
+        function getProgramColor(title) {
+            for (const key in programColors) {
+                // key를 단어 경계로 감싸 정규식 생성
+                const regex = new RegExp(`\\b${escapeRegExp(key)}\\b`);
+                if (regex.test(title)) {
+                    return programColors[key];
+                }
+            }
+            return '#ccc'; // 기본 색상
+        }
+
+        // 특수문자 포함 키워드를 위한 이스케이프 처리 함수
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
         function applyFilters(calendar) {
             const selectedCenter = document.getElementById('centerFilter').value;
             const selectedClass = document.getElementById('classFilter').value;
 
             const filtered = rawEvents.filter(event => {
                 const centerMatch = selectedCenter === 'none' || event.extendedProps.center === selectedCenter;
-                const classMatch = selectedClass === 'none' || event.title === selectedClass;
+                const classMatch = selectedClass === 'none' || event.title.includes(selectedClass);
                 return centerMatch && classMatch;
             });
 
@@ -302,7 +486,7 @@
   <option value="마스터 트레이닝">마스터 트레이닝</option>
   <option value="머메이드">머메이드</option>
   <option value="세미나">세미나</option>
-  <option value="세션교육">세션교육</option>
+  <option value="세션 교육">세션 교육</option>
   <option value="스페셜티">스페셜티</option>
   <option value="응급처치 교육">응급처치 교육</option>
   <option value="이론교육">이론교육</option>
@@ -465,12 +649,15 @@ background:white; border-radius:10px; padding:20px; width:500px; box-shadow: 0 5
                 return matchesCenter && matchesClass;
             });
 
-            const coloredEvents = filtered.map(event => ({
-                ...event,
-                display: 'block',
-                color: programColors[event.title] || '#cccccc',
-                textColor: '#000'
-            }));
+            const coloredEvents = filtered.map(event => {
+                const matchedKey = Object.keys(programColors).find(key => event.title.includes(key));
+                return {
+                    ...event,
+                    color: programColors[matchedKey] || '#ccc',
+                    display: 'block',
+                    textColor: '#000',
+                };
+            });
 
             calendar.removeAllEvents();
             calendar.addEventSource(coloredEvents);
